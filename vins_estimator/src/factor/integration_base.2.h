@@ -48,6 +48,8 @@ class IntegrationBase
         noise_enc.block<3, 3>(15, 15) = (ENC_N * ENC_N) * Eigen::Matrix3d::Identity();
         noise_enc.block<3, 3>(18, 18) = (ACC_W * ACC_W) * Eigen::Matrix3d::Identity();
         noise_enc.block<3, 3>(21, 21) = (GYR_W * GYR_W) * Eigen::Matrix3d::Identity();
+        jacobian_enc.setZero();
+        covariance_enc.setZero();
 
         // 把jacobian和covariance也一并计算了
         noise = Eigen::Matrix<double, 18, 18>::Zero();
